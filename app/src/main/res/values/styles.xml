@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="KarmaAppTheme" parent="Theme.AppCompat.Light">
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/action_bar_color</item>
+        <item name="colorPrimaryDark">@color/status_bar_color</item>
+        <item name="android:navigationBarColor">@color/status_bar_color</item>
+        <item name="android:titleTextStyle">@style/KarmaAppTheme.ActionBar.TitleTextStyle</item>
+    </style>
+
+    <style name="KarmaAppTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColorPrimary">@color/text_color_material</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/primary_text_size</item>
+    </style>
+</resources>

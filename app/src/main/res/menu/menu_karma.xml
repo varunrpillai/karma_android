@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".KarmaActivity">
+    <item android:id="@+id/action_info" android:title="info"
+        android:orderInCategory="100" app:showAsAction="always"
+        android:icon="@drawable/ic_action_ic_info_purple"/>
+</menu>

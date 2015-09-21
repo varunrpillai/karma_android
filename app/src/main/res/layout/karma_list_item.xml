@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_friend"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp">
+
+        <ImageView
+            android:id="@+id/primary_icon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"/>
+
+           <TextView
+               android:id="@+id/karma_desc_entry"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_toLeftOf="@+id/secondary_icon"
+               android:layout_toRightOf="@+id/primary_icon"
+               android:layout_alignWithParentIfMissing="true"
+               android:layout_centerVertical="true"
+               android:fontFamily="sans-serif"
+               android:textSize="16sp"
+               android:layout_marginTop="8dp"
+               android:layout_marginBottom="8dp"
+               android:paddingRight="8dp"
+               android:paddingLeft="8dp"/>
+
+
+        <ImageView
+            android:id="@+id/secondary_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_action_ic_delete_white" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
