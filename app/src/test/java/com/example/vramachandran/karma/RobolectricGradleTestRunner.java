@@ -1,6 +1,4 @@
-package com.example.vramachandran.karma;
-
-import com.example.vramachandran.karma.BuildConfig;
+package com.demo.vramachandran.karma;
 
 import org.junit.runners.model.InitializationError;
 import org.robolectric.AndroidManifest;

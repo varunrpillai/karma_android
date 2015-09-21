@@ -1,8 +1,4 @@
-package com.example.vramachandran.karma.utils;
-
-import android.content.ComponentName;
-import android.content.Intent;
-import android.database.Cursor;
+package com.demo.vramachandran.karma.utils;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -15,13 +11,12 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.robolectric.Robolectric;
 
-import com.example.vramachandran.karma.RobolectricGradleTestRunner;
+import com.demo.vramachandran.karma.RobolectricGradleTestRunner;
 
 import junit.framework.Assert;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 

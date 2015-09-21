@@ -4,13 +4,13 @@
     android:layout_width="wrap_content"
     android:orientation="vertical">
 <fragment  android:id="@+id/fragment_add_karma"
-    android:name="com.example.vramachandran.karma.view.AddKarmaFragment"
+    android:name="com.demo.vramachandran.karma.view.AddKarmaFragment"
     tools:layout="@layout/fragment_add_karma" android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
 <fragment
 android:id="@+id/fragment_show_karma"
-    android:name="com.example.vramachandran.karma.view.KarmaListFragment"
+    android:name="com.demo.vramachandran.karma.view.KarmaListFragment"
     tools:layout="@layout/fragment_list_karma" android:layout_width="match_parent"
     android:layout_height="match_parent" />
 </LinearLayout>
