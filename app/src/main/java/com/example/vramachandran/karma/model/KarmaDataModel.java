@@ -171,26 +171,16 @@ public class KarmaDataModel implements KarmaRepository {
 
     @Override
     public int getCount() {
-        //TODO: Improve the logic
-        if (sCount == INVALID_VALUE) {
-            ((KarmaActivity) mContext).reloadData();
-        }
         return sCount;
     }
 
     @Override
     public int getDoneCount() {
-        if (sDoneCount == INVALID_VALUE) {
-            ((KarmaActivity) mContext).reloadData();
-        }
         return sDoneCount;
     }
 
     @Override
     public Date getLatestDate() {
-        if (sLastDate == null) {
-            ((KarmaActivity) mContext).reloadData();
-        }
         return sLastDate;
     }
 }
