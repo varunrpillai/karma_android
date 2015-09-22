@@ -25,15 +25,11 @@ public class KarmaCursorAdapter extends CursorAdapter {
         mListPresenter = presenter;
     }
 
-    // The newView method is used to inflate a new view and return it,
-    // you don't bind any data to the view at this point.
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return LayoutInflater.from(context).inflate(R.layout.karma_list_item, parent, false);
     }
 
-    // The bindView method is used to bind all data to a given view
-    // such as setting the text on a TextView.
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         if (view != null && cursor != null) {
@@ -51,11 +47,11 @@ public class KarmaCursorAdapter extends CursorAdapter {
             doneIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // Start flip animating the current image
                     final ScaleAnimation anim1 = new ScaleAnimation(1f, 0f, 1f, 1f, 50f, 50f);
                     anim1.setInterpolator(new LinearInterpolator());
                     anim1.setRepeatCount(0);
                     anim1.setDuration(200);
-                    // Start animating the image
                     view.startAnimation(anim1);
 
                     long id = (long) view.getTag();

@@ -10,6 +10,7 @@ import com.demo.vramachandran.karma.model.content.provider.KarmaContract;
 
 /**
  * Created by vramachandran on 9/18/2015.
+ * The db helper interacts with the database
  */
 public class KarmaDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.

@@ -12,14 +12,15 @@ import com.demo.vramachandran.karma.model.content.provider.KarmaContract;
 
 /**
  * Created by vramachandran on 9/20/2015.
+ * An adapter between service clients and Karma Content Provider
  */
 public class KarmaService extends IntentService {
 
-    public static final String KARMA_INTENT_ACTION = "action";
     public static final String KARMA_CONTENT_VALUE = "content_values";
     public static final String KARMA_SELECTION = "selection";
     public static final String KARMA_SELECTION_ARGS = "selection_args";
     public static final String LOG_TAG = "KS";
+    public static final String KARMA_CLASS = "com.demo.vramachandran.karma.model.service.KarmaService";
 
     public static final class KarmaActions {
         public static final String NO_ACTION = "no_action";

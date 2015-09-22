@@ -10,6 +10,7 @@ import com.demo.vramachandran.karma.R;
 
 /**
  * Created by vramachandran on 9/20/2015.
+ * Create a customizable dialog
  */
 public class DialogUtils {
     public static class KarmaDialogFragment extends DialogFragment {
@@ -39,6 +40,7 @@ public class DialogUtils {
             if (mDialogMessage != null) {
                 builder.setMessage(mDialogMessage);
             }
+            //TODO: Show button options based on client choice
        /*     builder.setPositiveButton(R.string.ok,
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {

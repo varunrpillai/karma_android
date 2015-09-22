@@ -6,6 +6,7 @@ import android.database.Cursor;
 
 /**
  * Created by vramachandran on 9/18/2015.
+ * Class facilitated for asynchronous db query operation
  */
 public class KarmaCursorLoader extends CursorLoader {
     private static final String TAG = "KarmaCursorLoader";
@@ -18,7 +19,6 @@ public class KarmaCursorLoader extends CursorLoader {
 
     @Override
     public Cursor loadInBackground() {
-        // this is just a simple query, could be anything that gets a cursor
         return mKarmaData.getKarmaItems();
     }
 }

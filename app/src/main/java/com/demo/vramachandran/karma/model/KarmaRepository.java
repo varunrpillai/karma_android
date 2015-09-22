@@ -9,19 +9,44 @@ import java.util.Date;
  * Created by vramachandran on 9/18/2015.
  */
 public interface KarmaRepository {
-    public void addKarma(String item);
+    /**
+     * Persist the added Karma item
+     * @param itemDesc itemDesc of item to be added
+     */
+    void addKarma(String itemDesc);
 
+    /**
+     * Update all Karma item with the provide values
+     */
     void updateKarma(ContentValues values);
 
-    public void updateKarma(long karmaId, ContentValues values);
+    /**
+     * Update specified Karma item with the provide values
+     */
+    void updateKarma(long karmaId, ContentValues values);
 
-    public void removeKarma(long karmaId);
+    /**
+     * Remove specified Karma item
+     */
+    void removeKarma(long karmaId);
 
-    public Cursor getKarmaItems();
+    /**
+     * Retrieve all karma items
+     */
+    Cursor getKarmaItems();
 
-    public int getCount();
+    /**
+     * Get the number of persisted karma items
+     */
+    int getCount();
 
+    /**
+     * Get the number of karma items that are marked done
+     */
     int getDoneCount();
 
+    /**
+     * Get the date of latest persistance occured
+     */
     Date getLatestDate();
 }

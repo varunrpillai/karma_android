@@ -13,6 +13,7 @@ import com.demo.vramachandran.karma.model.database.KarmaDbHelper;
 
 /**
  * Created by vramachandran on 9/18/2015.
+ * Content Provider defined for Karma
  */
 public class KarmaProvider extends ContentProvider {
 
@@ -32,18 +33,8 @@ public class KarmaProvider extends ContentProvider {
             + "/" + KarmaContract.KarmaEntry.TABLE_NAME;
 
     static {
-    /*
-     * The calls to addURI() go here, for all of the content URI patterns that the provider
-     * should recognize. For this snippet, only the calls for table karma are shown.
-     * Sets the integer value for multiple rows in table karma_entity to 1.
-     */
         URI_MATCHER.addURI(KarmaContract.AUTHORITY, KarmaContract.KarmaEntry.TABLE_NAME, VALID_KARMA_TABLE_URI);
 
-    /*
-     * Sets the code for a single row to 2. In this case, the "#" wildcard is
-     * used. "content://com.example.app.provider/karma_entity/1" matches, but
-     * "content://com.example.app.provider/karma_entity doesn't.
-     */
         URI_MATCHER.addURI(KarmaContract.AUTHORITY, KarmaContract.KarmaEntry.TABLE_NAME + "/#", VALID_KARMA_ITEM_URI);
     }
 
@@ -55,26 +46,12 @@ public class KarmaProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-         /*
-         * Choose the table to query and a sort order based on the code returned for the incoming
-         * URI. Here, too, only the statements for karma_entity are shown.
-         */
         switch (URI_MATCHER.match(uri)) {
-
-
-            // If the incoming URI was for all of karma_entity
             case VALID_KARMA_TABLE_URI:
-
                 if (TextUtils.isEmpty(sortOrder)) sortOrder = "_ID ASC";
                 break;
 
-            // If the incoming URI was for a single row
             case VALID_KARMA_ITEM_URI:
-                /*
-                 * Because this URI was for a single row, the _ID value part is
-                 * present. Get the last path segment from the URI; this is the _ID value.
-                 * Then, append the value to the WHERE clause for the query
-                 */
                 selection = selection + "_ID = " + uri.getLastPathSegment();
                 break;
 
@@ -109,6 +86,7 @@ public class KarmaProvider extends ContentProvider {
                 getContext().getContentResolver().notifyChange(KarmaContract.KARMA_ENTITY_CONTENT_URI, null);
                 return entityUri;
             default:
+                //TODO: case VALID_KARMA_ITEM_URI
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }
     }
@@ -118,9 +96,10 @@ public class KarmaProvider extends ContentProvider {
         switch (URI_MATCHER.match(uri)) {
             // If the incoming URI was for all of karma_entity
             case VALID_KARMA_TABLE_URI:
-                getContext().getContentResolver().notifyChange(uri, null);
+                getContext().getContentResolver().notifyChange(KarmaContract.KARMA_ENTITY_CONTENT_URI, null);
                 return mDbHelper.deleteKarma(selection, selectionArgs);
             default:
+                //TODO: case VALID_KARMA_ITEM_URI
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }
     }
@@ -130,10 +109,11 @@ public class KarmaProvider extends ContentProvider {
         switch (URI_MATCHER.match(uri)) {
             // If the incoming URI was for all of karma_entity
             case VALID_KARMA_TABLE_URI:
-                getContext().getContentResolver().notifyChange(uri, null);
+                getContext().getContentResolver().notifyChange(KarmaContract.KARMA_ENTITY_CONTENT_URI, null);
                 return mDbHelper.updateKarma(values, selection, selectionArgs);
             case VALID_KARMA_ITEM_URI:
-                getContext().getContentResolver().notifyChange(uri, null);
+                selection = selection + "_ID = " + uri.getLastPathSegment();
+                getContext().getContentResolver().notifyChange(KarmaContract.KARMA_ENTITY_CONTENT_URI, null);
                 return mDbHelper.updateKarma(values, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Unknown URI: " + uri);

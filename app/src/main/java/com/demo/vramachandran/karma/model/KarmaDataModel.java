@@ -19,29 +19,21 @@ import java.util.Date;
 
 /**
  * Created by vramachandran on 9/18/2015.
+ * An adapter between presenter and data service
  */
 public class KarmaDataModel implements KarmaRepository {
 
-
-    public static final String LOG_TAG = "KDM";
-    private SQLiteOpenHelper mDbHelper;
-    private Context mContext;
-    public static final int INVALID_VALUE = -1;
+    private static final String LOG_TAG = "KDM";
+    private static final int INVALID_VALUE = -1;
     private static int sCount = INVALID_VALUE;
     private static int sDoneCount = INVALID_VALUE;
     private static Date sLastDate = null;
-    public IntentService mService = null;
+    private SQLiteOpenHelper mDbHelper;
+    private Context mContext;
 
     public KarmaDataModel(Context context) {
         initializeDatabaseHelpers(context);
         mContext = context;
-    }
-
-    private IntentService getKarmaService() {
-        if (mService == null) {
-            mService = new KarmaService(LOG_TAG);
-        }
-        return mService;
     }
 
     protected void initializeDatabaseHelpers(Context context) {
@@ -60,7 +52,7 @@ public class KarmaDataModel implements KarmaRepository {
         karmaServiceIntent.setAction(KarmaService.KarmaActions.INSERT);
         karmaServiceIntent.putExtra(KarmaService.KARMA_CONTENT_VALUE, values);
         karmaServiceIntent.setComponent(new ComponentName(mContext.getPackageName(),
-                "com.example.vramachandran.karma.model.service.KarmaService"));
+                KarmaService.KARMA_CLASS));
         mContext.startService(karmaServiceIntent);
     }
 
@@ -83,7 +75,7 @@ public class KarmaDataModel implements KarmaRepository {
             karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION, selection);
             karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION_ARGS, selectionArgs);
             karmaServiceIntent.setComponent(new ComponentName(mContext.getPackageName(),
-                    "com.example.vramachandran.karma.model.service.KarmaService"));
+                    KarmaService.KARMA_CLASS));
             mContext.startService(karmaServiceIntent);
         }
     }
@@ -99,7 +91,7 @@ public class KarmaDataModel implements KarmaRepository {
         karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION, selection);
         karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION_ARGS, selectionArgs);
         karmaServiceIntent.setComponent(new ComponentName(mContext.getPackageName(),
-                "com.example.vramachandran.karma.model.service.KarmaService"));
+                KarmaService.KARMA_CLASS));
         mContext.startService(karmaServiceIntent);
     }
 
@@ -149,7 +141,6 @@ public class KarmaDataModel implements KarmaRepository {
                     latest = date;
                 }
             } while (cursor.moveToNext());
-            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
             lastDate = new Date(latest);
         }
         return lastDate;

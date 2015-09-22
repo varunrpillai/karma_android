@@ -16,10 +16,10 @@ import com.demo.vramachandran.karma.model.KarmaRepository;
 import com.demo.vramachandran.karma.model.content.provider.KarmaContract;
 import com.demo.vramachandran.karma.model.KarmaCursorLoader;
 import com.demo.vramachandran.karma.view.KarmaFragment;
-import com.demo.vramachandran.karma.view.KarmaListFragment;
 
 /**
  * Created by vramachandran on 9/18/2015.
+ * Adapter for ListView fragment and data model
  */
 public class KarmaListPresenter implements ListPresenter, LoaderManager.LoaderCallbacks<Cursor> {
     public static final int LOADER_ID = 1;
@@ -27,21 +27,23 @@ public class KarmaListPresenter implements ListPresenter, LoaderManager.LoaderCa
     private final Context mContext;
     private CursorAdapter mAdapter;
     private ListView mListView;
-    private KarmaFragment.OnFragmentInteractionListener mListener;
+    private KarmaFragment.FragmentInteractionListener mListener;
     private KarmaCursorLoader mLoader;
 
-    public KarmaListPresenter(KarmaListFragment karmaListFragment,
-                              KarmaFragment.OnFragmentInteractionListener listener,
+    public KarmaListPresenter(KarmaFragment.FragmentInteractionListener listener,
                               Activity activity, ListView listView) {
         mContext = (Context) activity;
 
         mListener = listener;
         mKarmaData = listener.getKarmaData();
 
+        //Setup adapter and list. Then initiate a list view data load
         mAdapter = new KarmaCursorAdapter(mContext, null, 0, this);
         mListView = listView;
         mListView.setAdapter(mAdapter);
+        reload();
 
+        //initiate loader
         activity.getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
@@ -78,7 +80,6 @@ public class KarmaListPresenter implements ListPresenter, LoaderManager.LoaderCa
     }
 
     public void markDone(long id) {
-        // New value for one column
         ContentValues values = new ContentValues();
         values.put(KarmaContract.KarmaEntry.COLUMN_NAME_KARMA_STATE, KarmaContract.KarmaItemState.DONE);
         values.put(KarmaContract.KarmaEntry.COLUMN_NAME_UPDATE_TIME_STAMP, System.currentTimeMillis());
@@ -86,7 +87,6 @@ public class KarmaListPresenter implements ListPresenter, LoaderManager.LoaderCa
     }
 
     public void markPending(long id) {
-        // New value for one column
         ContentValues values = new ContentValues();
         values.put(KarmaContract.KarmaEntry.COLUMN_NAME_KARMA_STATE, KarmaContract.KarmaItemState.PENDING);
         values.put(KarmaContract.KarmaEntry.COLUMN_NAME_UPDATE_TIME_STAMP, System.currentTimeMillis());

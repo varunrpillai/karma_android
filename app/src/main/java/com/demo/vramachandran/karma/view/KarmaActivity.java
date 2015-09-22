@@ -14,10 +14,13 @@ import com.demo.vramachandran.karma.presenter.KarmaObservable;
 import com.demo.vramachandran.karma.R;
 import com.demo.vramachandran.karma.utils.DialogUtils;
 
+/**
+ * Launcher Activity for Karma app. This will be managing adding and viewing the Karma.
+ */
+public class KarmaActivity extends AppCompatActivity
+        implements KarmaFragment.FragmentInteractionListener, KarmaSettings.SettingsInteractionListener {
 
-public class KarmaActivity extends AppCompatActivity implements KarmaFragment.OnFragmentInteractionListener {
-
-    public static final String KARMA_DIALOG_TAG = "karma_dialog";
+    private static final String KARMA_DIALOG_TAG = "karma_dialog";
     private KarmaRepository mKarmaData = null;
     private KarmaObservable mKarmaObservable;
     private KarmaListFragment mListFragment = null;
@@ -41,10 +44,8 @@ public class KarmaActivity extends AppCompatActivity implements KarmaFragment.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_karma);
-        KarmaSettings settings = new KarmaSettings(this);
-        if (settings.needHelpDialog()) {
-            showHelpDialog();
-        }
+        KarmaSettings settings = new KarmaSettings(this, this);
+        settings.verifyFirstLaunch();
     }
 
     private void showHelpDialog() {
@@ -105,5 +106,10 @@ public class KarmaActivity extends AppCompatActivity implements KarmaFragment.On
                     .findFragmentById(R.id.fragment_show_karma);
         }
         mListFragment.reloadData();
+    }
+
+    @Override
+    public void onFirstLaunch() {
+        showHelpDialog();
     }
 }

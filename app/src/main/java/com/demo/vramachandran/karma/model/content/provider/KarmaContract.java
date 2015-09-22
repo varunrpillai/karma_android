@@ -5,10 +5,11 @@ import android.provider.BaseColumns;
 
 /**
  * Created by vramachandran on 9/18/2015.
+ * The contracts defined for the Karma Content Provider
  */
 public final class KarmaContract {
 
-    public static final String AUTHORITY = "com.example.vramachandran.karma.provider";
+    public static final String AUTHORITY = "com.demo.vramachandran.karma.provider";
 
     public static final String COLUMN_NAME_NULLABLE = null;
     /**

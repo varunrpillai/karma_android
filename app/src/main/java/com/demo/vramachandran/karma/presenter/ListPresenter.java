@@ -4,11 +4,23 @@ package com.demo.vramachandran.karma.presenter;
  * Created by vramachandran on 9/19/2015.
  */
 public interface ListPresenter {
-    public void deleteItem(long id);
+    /**
+     * Delete the selected list item
+     */
+    void deleteItem(long id);
 
-    public void markDone(long id);
+    /**
+     * Mark the current list item as done
+     */
+    void markDone(long id);
 
-    public void markPending(long id);
+    /**
+     * Mark the current list item as pending
+     */
+    void markPending(long id);
 
+    /**
+     * Reload the list
+     */
     void reload();
 }

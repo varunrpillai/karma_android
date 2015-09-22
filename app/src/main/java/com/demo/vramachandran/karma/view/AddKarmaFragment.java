@@ -57,7 +57,7 @@ public class AddKarmaFragment extends KarmaFragment implements AddItemView, View
         });
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         mProgressBar.setMax(7);
-        mPresenter = new AddKarmaPresenter(this, (OnFragmentInteractionListener) getActivity());
+        mPresenter = new AddKarmaPresenter(this,(FragmentInteractionListener) getActivity(), getActivity());
         return rootView;
     }
 
@@ -78,27 +78,18 @@ public class AddKarmaFragment extends KarmaFragment implements AddItemView, View
     }
 
     @Override
-    public void showItemError() {
-
-    }
-
-    @Override
     public void enableAddItemView(boolean enabled) {
         mKarmaText.setEnabled(enabled);
         mAddButton.setEnabled(enabled);
     }
 
     @Override
-    public void setEditTextHint(int count) {
-        if (count < 7) {
-            mKarmaText.setHint("Please enter your " + (count + 1) + "/7 Karma");
-        } else {
-            mKarmaText.setHint("You have entered all the 7 Karmas. Please manage it daily.");
-        }
+    public void setEditTextHint(String hint) {
+        mKarmaText.setHint(hint);
     }
 
     @Override
-    public void setProgressValue(int doneCount) {
+    public void setProgressState(int doneCount) {
         SetWallPaperTask setWallPaperTask = new SetWallPaperTask();
         setWallPaperTask.execute(doneCount);
         mProgressBar.setProgress(doneCount);

@@ -6,6 +6,7 @@ import java.util.Date;
 public class DateUtils {
 
     /**
+     * Days between two given dates
      * This method also assumes endDate >= startDate
      */
     public static long daysBetween(Date startDate, Date endDate) {
@@ -20,6 +21,9 @@ public class DateUtils {
         return daysBetween;
     }
 
+    /**
+     * Extract date part and remove  the time
+     */
     public static Calendar getDatePart(Date date) {
         Calendar cal = Calendar.getInstance();       // get calendar instance
         cal.setTime(date);
