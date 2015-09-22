@@ -48,6 +48,12 @@ public class KarmaActivity extends AppCompatActivity
         settings.verifyFirstLaunch();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        reloadData();
+    }
+
     private void showHelpDialog() {
         DialogUtils.KarmaDialogFragment karmaDialog = (DialogUtils.KarmaDialogFragment) getFragmentManager().
                 findFragmentByTag(KARMA_DIALOG_TAG);

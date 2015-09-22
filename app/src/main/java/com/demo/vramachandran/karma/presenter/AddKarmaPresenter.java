@@ -63,6 +63,7 @@ public class AddKarmaPresenter implements AddItemPresenter, KarmaObserver {
             if (difference > 0) {
                 ContentValues values = new ContentValues();
                 values.put(KarmaContract.KarmaEntry.COLUMN_NAME_KARMA_STATE, KarmaContract.KarmaItemState.PENDING);
+                values.put(KarmaContract.KarmaEntry.COLUMN_NAME_UPDATE_TIME_STAMP, System.currentTimeMillis());
                 mKarmaData.updateKarma(values);
             }
         }

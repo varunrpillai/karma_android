@@ -41,7 +41,6 @@ public class KarmaListPresenter implements ListPresenter, LoaderManager.LoaderCa
         mAdapter = new KarmaCursorAdapter(mContext, null, 0, this);
         mListView = listView;
         mListView.setAdapter(mAdapter);
-        reload();
 
         //initiate loader
         activity.getLoaderManager().initLoader(LOADER_ID, null, this);

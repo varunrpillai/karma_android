@@ -69,15 +69,15 @@ public class KarmaDataModel implements KarmaRepository {
         if (karmaId != INVALID_VALUE) {
             selection = KarmaContract.KarmaEntry._ID + "=?";
             selectionArgs = new String[]{String.valueOf(karmaId)};
-            Intent karmaServiceIntent = new Intent();
-            karmaServiceIntent.setAction(KarmaService.KarmaActions.UPDATE);
-            karmaServiceIntent.putExtra(KarmaService.KARMA_CONTENT_VALUE, values);
-            karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION, selection);
-            karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION_ARGS, selectionArgs);
-            karmaServiceIntent.setComponent(new ComponentName(mContext.getPackageName(),
-                    KarmaService.KARMA_CLASS));
-            mContext.startService(karmaServiceIntent);
         }
+        Intent karmaServiceIntent = new Intent();
+        karmaServiceIntent.setAction(KarmaService.KarmaActions.UPDATE);
+        karmaServiceIntent.putExtra(KarmaService.KARMA_CONTENT_VALUE, values);
+        karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION, selection);
+        karmaServiceIntent.putExtra(KarmaService.KARMA_SELECTION_ARGS, selectionArgs);
+        karmaServiceIntent.setComponent(new ComponentName(mContext.getPackageName(),
+                KarmaService.KARMA_CLASS));
+        mContext.startService(karmaServiceIntent);
     }
 
     @Override
